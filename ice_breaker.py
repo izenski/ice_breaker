@@ -2,6 +2,7 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
+from langchain_core.output_parsers import StrOutputParser
 
 information = """
 Joan Ruth Bader Ginsburg; née Bader; March 15, 1933 - September 18, 2020) was 
@@ -39,9 +40,10 @@ if __name__ == "__main__":
     )
 
     # llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
+    # llm = ChatOllama(model="mistral")
     llm = ChatOllama(model="llama3")
 
-    chain = summary_prompt_template | llm
+    chain = summary_prompt_template | llm | StrOutputParser()
     res = chain.invoke(input={"information": information})
 
     print(res)
