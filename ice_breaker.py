@@ -1,6 +1,7 @@
 # import os
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 
 information = """
 Joan Ruth Bader Ginsburg; née Bader; March 15, 1933 - September 18, 2020) was 
@@ -37,7 +38,8 @@ if __name__ == "__main__":
         input_variables=["information"], template=summary_template
     )
 
-    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
+    # llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
+    llm = ChatOllama(model="llama3")
 
     chain = summary_prompt_template | llm
     res = chain.invoke(input={"information": information})
