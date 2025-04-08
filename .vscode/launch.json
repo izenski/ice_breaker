@@ -6,13 +6,13 @@
   "configurations": [
 
     {
-      "name": "Ice Breaker Runner",
+      "name": "Current File Runner",
       "type": "debugpy",
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
       "justMyCode": true,
-      "envFile": "${workspaceFolder}/.env"
+      //"envFile": "${workspaceFolder}/.env"
     }
   ]
 }
