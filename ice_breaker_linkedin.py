@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 # from langchain_ollama import ChatOllama
 # from langchain_core.output_parsers import StrOutputParser
 
-from linkedin import scrape_linkedin_profile
+from third_parties.linkedin import scrape_linkedin_profile
 
 if __name__ == "__main__":
     load_dotenv()
@@ -23,8 +23,8 @@ if __name__ == "__main__":
 
     llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
 
-    chain = summary_prompt_template | llm 
-    linkedin_data: str = scrape_linkedin_profile(linkedin_profile_url="whatever")
+    chain = summary_prompt_template | llm
+    linkedin_data: str = scrape_linkedin_profile("fake url", True)
     res = chain.invoke(input={"information": linkedin_data})
 
     print(res)
